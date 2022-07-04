@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import SEO from '../components/SEO';
 
 const BeerGridStyles = styled.div`
   display: grid;
@@ -18,31 +19,24 @@ const SingleBeerStyles = styled.div`
     object-fit: contain;
     display: block;
     display: grid;
-    align-items: center; 
-    font-size: 10px; 
+    align-items: center;
+    font-size: 10px;
     color: var(--black);
-
   }
 `;
 
 export default function BeersPage({ data }) {
   return (
     <div>
-      <h2>
-        We have {data.beers.nodes.length} Beers Available. Dine in
-        Only!
-      </h2>
+      <SEO title={`Beers, we have ${data.beers.nodes.length} beers in stock`} />
+      <h2>We have {data.beers.nodes.length} Beers Available. Dine in Only!</h2>
       <BeerGridStyles>
         {data.beers.nodes.map((beer) => (
           <SingleBeerStyles key={beer.id}>
             <img src={beer.image} alt="beer.name" />
             <h3>{beer.name}</h3>
             {beer.price}
-            <p
-              title={`${Math.ceil(
-                beer.rating.average
-              )} out of 5 stars`}
-            >
+            <p title={`${Math.ceil(beer.rating.average)} out of 5 stars`}>
               {`⭐️`.repeat(beer.rating.average)}
               <span style={{ filter: `grayscale(100%)` }}>
                 {`⭐️`.repeat(5 - beer.rating.average)}
