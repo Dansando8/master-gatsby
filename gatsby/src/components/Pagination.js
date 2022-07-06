@@ -35,13 +35,11 @@ const Pagination = ({
   base,
 }) => {
   const totalPages = Math.ceil(totalCount / pageSize);
-  console.log(totalPages, 'TOTAL PAGES');
   const prevPage = currentPage - 1;
   const nextPage = currentPage + 1;
   const hasNextPage = nextPage <= totalPages;
   const hasPrevPage = prevPage >= 1;
 
-  console.log(currentPage, 'This is the current page!');
 
   return (
     <PaginationStyles>

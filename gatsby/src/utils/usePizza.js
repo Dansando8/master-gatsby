@@ -9,8 +9,8 @@ export default function usePizza({ pizzas, values }) {
   // We got rid of this line because we moved useState up to the provider
   // const [order, setOrder] = useState([]);
   // Now we access both our state and our updater function (setOrder) via context
-  const [order, setOrder] = useContext(OrderContext);
-  const [error, setError] = useState();
+  const [order, setOrder] = useContext(OrderContext || []);
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -22,16 +22,15 @@ export default function usePizza({ pizzas, values }) {
   function removeFromOrder(index) {
     setOrder([
       // everything before the item we want to remove
-      ...order.slice(0, index),
+      ...order?.slice(0, index),
       // everything after the item we want to remove
-      ...order.slice(index + 1),
+      ...order?.slice(index + 1),
     ]);
   }
 
   // this is the function that is run when someone submits the form
   async function submitOrder(e) {
     e.preventDefault();
-    console.log(e);
     setLoading(true);
     setError(null);
     // setMessage('Go eat!');

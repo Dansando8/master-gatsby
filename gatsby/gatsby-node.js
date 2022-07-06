@@ -56,9 +56,9 @@ async function turnToppingsIntoPages({ graphql, actions }) {
       },
     });
   });
-
-  // 4 Pass topping data to pizza
 }
+
+// Beer API has a maximum of requests, uncomment to test
 
 async function fetchBeersAndTurnIntoNodes({
   actions,
@@ -120,9 +120,7 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
 
   // 3 Figure out how many pages there are base on how many slicemasters there are, and how many per page
   const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
-  const pageCount = Math.ceil(
-    data.slicemasters.totalCount / pageSize
-  );
+  const pageCount = Math.ceil(data.slicemasters.totalCount / pageSize);
 
   // 4 Loop from 1 to 10
   Array.from({ length: pageCount }).forEach((_, i) => {

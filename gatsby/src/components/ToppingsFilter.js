@@ -45,7 +45,6 @@ function countPizzasInToppings(pizzas) {
   const sortedToppings = Object.values(counts).sort(
     (a, b) => b.count - a.count
   );
-  console.log(sortedToppings);
   return sortedToppings;
 }
 
@@ -69,7 +68,6 @@ export default function ToppingsFilter({ activeTopping }) {
       }
     }
   `);
-  console.clear();
 
   const toppingsWithCounts = countPizzasInToppings(pizzas.nodes);
 

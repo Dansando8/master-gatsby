@@ -5,10 +5,9 @@ import calculatePizzaPrice from '../utils/calculatePizzaPrice';
 import formatMoney from '../utils/formatMoney';
 
 function PizzaOrder({ order, pizzas, removeFromOrder }) {
-
   return (
     <>
-      {order.map((singleOrder, index) => {
+      {order?.map((singleOrder, index) => {
         const pizza = pizzas.find((pizza) => pizza.id === singleOrder.id);
         return (
           <MenuItemStyles key={`${singleOrder.id}-${index}`}>
